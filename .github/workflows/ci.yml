@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+    workflow_dispatch:
+      
+env:
+  MIX_ENV: test
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    services:
+      falkordb:
+        image: falkordb/falkordb:latest
+        ports:
+          - 6379:6379
+          - 3000:3000
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Elixir
+        uses: erlef/setup-elixir@v1
+        with:
+          elixir-version: '1.17.3' 
+          otp-version: '27'      
+
+      - name: Install Dependencies
+        run: mix deps.get
+
+      - name: Compile Project
+        run: mix compile
+
+      - name: Run Tests
+        run: mix test

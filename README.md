@@ -1,3 +1,4 @@
+[![CI](https://github.com/georgfaus/falkordb_ex/actions/workflows/ci.yml/badge.svg)](https://github.com/georgfaus/falkordb_ex/actions/workflows/ci.yml)
 # Falkor
 
 **experimental FalkorDB client.**
