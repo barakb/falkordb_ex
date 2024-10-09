@@ -17,13 +17,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    services:
-      falkordb:
-        image: falkordb/falkordb:latest
-        ports:
-          - 6379:6379
-          - 3000:3000
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
